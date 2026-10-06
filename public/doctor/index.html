@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brillora Health</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Brillora Health</a>
+      <div class="ms-auto d-flex align-items-center gap-5" id="langContainer">
+        <div class="d-flex align-items-center">
+          <button id="themeToggle" class="btn btn-sm btn-outline-secondary ms-4" title="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+          </button>
+          <div class="dropdown" tabindex="0">
+            <div class="dropdown-toggle" id="selectedLang">English</div>
+            <div class="dropdown-menu" id="languageMenu">
+              <div data-value="en">English</div>
+              <div data-value="ar">العربية</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mb-3">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="d-flex align-items-start">
+        <div class="avatar m-5">
+          <i class="fa-solid fa-circle-user fa-7x text-secondary"></i>
+        </div>
+        <div class="w-100">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-key" data-key="personalCode"></div>
+              <div class="info-val" id="patientCode" data-server-user="personalCode"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="name"></div>
+              <div class="info-val" id="patientName" data-server-user="name"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="nationalId"></div>
+              <div class="info-val" data-server-user="nationalId"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="occupation"></div>
+              <div class="info-val" data-server-user="occupation"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="dob"></div>
+              <div class="info-val" data-server-user="dob"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="phone"></div>
+              <div class="info-val" data-server-user="phone"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="closeContact"></div>
+              <div class="info-val" data-server-user="closeContact"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="governorate"></div>
+              <div class="info-val" data-server-user="governorate"></div>
+            </div>
+            <div class="col-md-12">
+              <div class="info-key" data-key="medicalCondition"></div>
+              <div class="info-val" data-server-user="medicalCondition"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mt-4">
+        <li class="nav-item">
+          <a class="nav-link active btn" data-bs-toggle="tab" data-bs-target="#details" data-key="patientDetails"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn" data-bs-toggle="tab" data-bs-target="#history" data-key="medicalHistory"></a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active p-3" id="details"></div>
+        <div class="tab-pane fade p-3" id="history">
+          <button class="btn btn-primary mb-3" id="printBtn" data-key="printTable" title="printBtn"></button>
+          <button id="addDataBtn1" class="btn btn-primary mb-3" data-key="addMedicalData">Add Medical Data</button>
+          <div class="table-responsive">
+            <table class="table table-striped custom-table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th data-key="details"></th>
+                  <th data-key="date"></th>
+                  <th data-key="diagnosis"></th>
+                  <th data-key="treatment"></th>
+                  <th data-key="medication"></th>
+                  <th data-key="notes"></th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+                <!-- الصفوف هتتولد هنا -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <dialog class="custom-dialog" id="detailsModal">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h1 id="modalTitle"></h1>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="dialog-body" id="modalBody"></div>
+    </div>
+  </dialog>
+
+<dialog class="custom-dialog" id="detailsModal1">
+  <div class="dialog-content">
+
+    <!-- Header -->
+    <div class="dialog-header">
+      <h1 data-key="addMedicalData">Add Medical Data</h1>
+      <button class="close-btn btn btn-light" id="closeModalBtn1">&times;</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="dialog-tabs mb-0 d-flex gap-2 flex-wrap">
+      <button class="btn btn-outline-primary tab-btn active" data-tab="patientDetails1" data-key="patientInfo">Patient Info</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="operations1" data-key="operations">Operations</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="radiology1" data-key="radiology">Radiology</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="labTests1" data-key="analysis">Lab Tests</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="medications1" data-key="medicine">Medications</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="diagnosis1" data-key="diagnosisTitle">Diagnosis</button>
+      <button class="btn btn-outline-primary tab-btn" data-tab="symptoms1" data-key="symptoms">Symptoms</button>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="tab-content-wrapper">
+      <form id="modalForm1">
+        <!-- Patient Info -->
+        <div class="tab-section" data-section="patientDetails1">
+          <div class="mb-3">
+            <label data-key="textPlaceholder">Text</label>
+            <textarea class="form-control" name="text" data-key="textPlaceholder" placeholder="Enter text here"></textarea>
+          </div>
+          <div class="mb-3">
+            <label data-key="datePlaceholder">Date</label>
+            <input type="date" class="form-control" name="date" data-key="datePlaceholder" placeholder="Enter date here">
+          </div>
+        </div>
+
+        <!-- Operations -->
+        <div class="tab-section d-none" data-section="operations1">
+          <div id="operationsContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addOperationText1" data-key="addTextBtn">Add Text</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addOperationImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addOperationVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+
+        <!-- Radiology -->
+        <div class="tab-section d-none" data-section="radiology1">
+          <div id="radiologyContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addRadiologyText1" data-key="addTextBtn">Add Text</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addRadiologyImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addRadiologyVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+
+        <!-- Lab Tests -->
+        <div class="tab-section d-none" data-section="labTests1">
+          <div id="labTestsContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addLabTestText1" data-key="addTextBtn">Add Text</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addLabTestImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addLabTestVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+
+        <!-- Medications -->
+        <div class="tab-section d-none" data-section="medications1">
+          <div id="medicationsContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addMedicationText1" data-key="addTextBtn">Add Medication</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addMedicationImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addMedicationVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+
+        <!-- Diagnosis -->
+        <div class="tab-section d-none" data-section="diagnosis1">
+          <div id="diagnosisContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addDiagnosisText1" data-key="addTextBtn">Add Text</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addDiagnosisImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addDiagnosisVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+
+        <!-- Symptoms -->
+        <div class="tab-section d-none" data-section="symptoms1">
+          <div id="symptomsContainer1"></div>
+          <div class="add-buttons">
+            <button type="button" class="btn btn-sm btn-outline-success" id="addSymptomText1" data-key="addTextBtn">Add Text</button>
+            <button type="button" class="btn btn-sm btn-outline-info" id="addSymptomImage1" data-key="addImageBtn">Add Image</button>
+            <button type="button" class="btn btn-sm btn-outline-warning" id="addSymptomVideo1" data-key="addVideoBtn">Add Video</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer ثابت -->
+    <div class="dialog-footer">
+      <button type="submit" class="btn btn-primary" form="modalForm1" data-key="saveJson">Save JSON</button>
+    </div>
+  </div>
+</dialog>
+
+
+
+  <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/all.min.js"></script>
+  <script src="../assets/print-toggle-details.js"></script>
+  <script src="../assets/themeToggle.js"></script>
+  <script src="../assets/translations.js"></script>
+  <script src="../assets/doctor.js"></script>
+  <script src="input.js"></script>
+</body>
+</html>

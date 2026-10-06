@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل العمليات</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for video overlay and play button */
+        .video-container {
+            position: relative;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        .video-container:hover .video-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .video-play-button {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: scale(1);
+            opacity: 0.9;
+        }
+        .video-container:hover .video-play-button {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Button to open the modal (Simulates clicking a card) -->
+    <button id="openModalBtn" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        فتح تفاصيل العمليات
+    </button>
+
+    <!-- The Modal Container (Hidden by default) -->
+    <div id="detailsModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4 animate-fade-in">
+        
+        <!-- Modal Content -->
+        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-6xl max-h-[95vh] overflow-y-auto transform transition-all duration-300 ease-out scale-95 opacity-0" id="modalContent">
+
+            <!-- Modal Header with Close Button -->
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">تفاصيل العمليات</h1>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-red-500 transition-colors duration-300 text-3xl">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Main Content Grid -->
+            <main class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+                <!-- Text Details Section -->
+                <section class="space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-700 mb-4 border-b-2 border-indigo-400 pb-2">تفاصيل نصية</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-600 mb-2">ملخص</h3>
+                                <p class="text-gray-500 leading-relaxed">
+                                    هنا يمكن إضافة ملخص شامل لعمليات القسم. يوضح هذا الملخص الأهداف الرئيسية، والمهام الأساسية، وأحدث الإنجازات التي تم تحقيقها. يمكن أن يشمل أيضًا نظرة عامة على سير العمليات اليومية والتحديات التي يتم التعامل معها بشكل دوري.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-600 mb-2">المقاييس الرئيسية</h3>
+                                <p class="text-gray-500 leading-relaxed">
+                                    هذه المقاييس تتضمن أرقام الأداء الهامة مثل معدلات الإنجاز، ومستويات الكفاءة، ونتائج التقييمات. يتم تحديثها بشكل مستمر لتقديم صورة واضحة عن حالة العمليات والمساعدة في اتخاذ القرارات.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-600 mb-2">الأنشطة الأخيرة</h3>
+                                <p class="text-gray-500 leading-relaxed">
+                                    تتضمن هذه القائمة آخر الأنشطة والمشاريع التي تم إنجازها. يمكن أن تكون تقارير شهرية، أو تحديثات على مشاريع قيد التنفيذ، أو حتى إشعارات بأحداث هامة داخل القسم.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Visual Overview Section -->
+                <section class="space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-700 mb-4 border-b-2 border-indigo-400 pb-2">نظرة عامة مرئية</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Placeholder Image 1 -->
+                            <div class="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden shadow-md group">
+                                <img src="https://placehold.co/400x200/4F46E5/FFF?text=صورة+1" alt="صورة توضيحية 1" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <!-- Placeholder Image 2 -->
+                            <div class="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden shadow-md group">
+                                <img src="https://placehold.co/400x200/4F46E5/FFF?text=صورة+2" alt="صورة توضيحية 2" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <!-- Placeholder Image 3 -->
+                            <div class="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden shadow-md group">
+                                <img src="https://placehold.co/400x200/4F46E5/FFF?text=صورة+3" alt="صورة توضيحية 3" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <!-- Placeholder Image 4 -->
+                            <div class="relative w-full h-48 bg-gray-200 rounded-lg overflow-hidden shadow-md group">
+                                <img src="https://placehold.co/400x200/4F46E5/FFF?text=صورة+4" alt="صورة توضيحية 4" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Operational Videos Section -->
+            <section class="mt-16">
+                <h2 class="text-2xl font-bold text-gray-700 mb-4 border-b-2 border-indigo-400 pb-2">مقاطع فيديو تشغيلية</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Placeholder Video 1 -->
+                    <div class="video-container relative w-full h-64 bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://placehold.co/600x400/1F2937/FFF?text=فيديو+1" alt="فيديو 1" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="video-overlay">
+                            <button class="text-white text-5xl video-play-button">
+                                <i class="fas fa-play-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Placeholder Video 2 -->
+                    <div class="video-container relative w-full h-64 bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://placehold.co/600x400/1F2937/FFF?text=فيديو+2" alt="فيديو 2" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="video-overlay">
+                            <button class="text-white text-5xl video-play-button">
+                                <i class="fas fa-play-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const detailsModal = document.getElementById('detailsModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal() {
+            detailsModal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                detailsModal.classList.add('hidden');
+            }, 300); // Duration matches the transition
+        }
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        detailsModal.addEventListener('click', (e) => {
+            if (e.target === detailsModal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

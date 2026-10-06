@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard</title>
+    
+    <link rel="stylesheet" href="../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesome-free-7.0.0-web/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar shadow-sm">
+            <div class="p-3">
+                <h5 class="fw-bold mb-4"><i class="fa-solid fa-chart-pie me-2"></i>Adshboard</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-page="dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="patients"><i class="fa-solid fa-user-group me-2"></i> Patients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="appointments"><i class="fa-solid fa-calendar-check me-2"></i> Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="staff"><i class="fa-solid fa-users me-2"></i> Staff</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="billing"><i class="fa-solid fa-file-invoice-dollar me-2"></i> Billing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="inventory"><i class="fa-solid fa-boxes-stacked me-2"></i> Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="reports"><i class="fa-solid fa-chart-line me-2"></i> Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="settings"><i class="fa-solid fa-gear me-2"></i> Settings</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1">
+            <!-- Header -->
+            <header class="d-flex justify-content-between align-items-center p-3">
+                <!-- Language Selector + Theme Toggle -->
+                <div class="d-flex align-items-center">
+                  <div class="dropdown" tabindex="0">
+                    <div class="dropdown-toggle" id="selectedLang">English</div>
+                    <div class="dropdown-menu" id="languageMenu">
+                      <div data-value="en">English</div>
+                      <div data-value="ar">العربية</div>
+                    </div>
+                  </div>
+                  <button id="themeToggle" class="btn btn-sm btn-outline-secondary ms-4" title="Toggle Theme">
+                      <i class="fa-solid fa-moon"></i>
+                  </button>
+                </div>
+                <!-- User Avatars -->
+                <div>
+                    <img src="https://ui-avatars.com/api/?name=User+1&size=35" class="rounded-circle me-2 user-avatar" alt="User1" />
+                    <img src="https://ui-avatars.com/api/?name=User+2&size=35" class="rounded-circle user-avatar" alt="User2" />
+                </div>
+            </header>
+
+
+
+            <!-- Page Sections -->
+            <div class="p-4">
+                <!-- Dashboard -->
+                <section id="dashboard" class="page-section">
+                    <h4 class="mb-4">Dashboard Overview</h4>
+                    <div class="row g-3">
+                        <div class="col-md-3 d-flex">
+                            <div class="card shadow-sm p-3 w-100 h-100" data-target="section1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6>Total Patients</h6>
+                                    <i class="fa-solid fa-user text-primary fs-4"></i>
+                                </div>
+                                <h3 class="fw-bold mt-2">5,231</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="card shadow-sm p-3 w-100 h-100" data-target="section2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6>Upcoming Appointments</h6>
+                                    <i class="fa-solid fa-calendar-days text-success fs-4"></i>
+                                </div>
+                                <h3 class="fw-bold mt-2">48</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="card shadow-sm p-3 w-100 h-100" data-target="section3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6>Pending Bills</h6>
+                                    <div class="progress-circle" data-value="75"><span>75%</span></div>
+                                </div>
+                                <h3 class="fw-bold mt-2">(12)</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="card shadow-sm p-3 w-100 h-100" data-target="section4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6>Pending Bills</h6>
+                                    <i class="fa-solid fa-money-bill text-warning fs-4"></i>
+                                </div>
+                                <h3 class="fw-bold mt-2">148</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- السكاشن -->
+                    <div id="section1" class="toggle-section">📊 تفاصيل المرضى الكاملة هنا...</div>
+                    <div id="section2" class="toggle-section">📅 المواعيد القادمة بالتفصيل...</div>
+                    <div id="section3" class="toggle-section">💰 فواتير معلقة مع مستوى الدفع...</div>
+                    <div id="section4" class="toggle-section">💵 فواتير إضافية وتفاصيل الدفع...</div>
+                </section>
+
+
+                <!-- Patients -->
+                <section id="patients" class="page-section d-none">
+                    <h4>Patients</h4>
+                    <p>Here is the patients list.</p>
+                </section>
+
+                <!-- Appointments -->
+                <section id="appointments" class="page-section d-none">
+                    <h4>Appointments</h4>
+                    <p>Here is the appointments schedule.</p>
+                </section>
+
+                <!-- Staff -->
+                <section id="staff" class="page-section d-none">
+                    <h4>Staff</h4>
+                    <p>Here is the staff list.</p>
+                </section>
+
+                <!-- Billing -->
+                <section id="billing" class="page-section d-none">
+                    <h4>Billing</h4>
+                    <p>Here is the billing section.</p>
+                </section>
+
+                <!-- Inventory -->
+                <section id="inventory" class="page-section d-none">
+                    <h4>Inventory</h4>
+                    <p>Here is the inventory list.</p>
+                </section>
+
+                <!-- Reports -->
+                <section id="reports" class="page-section d-none">
+                    <h4>Reports</h4>
+                    <p>Here are the reports.</p>
+                </section>
+
+                <!-- Settings -->
+                <section id="settings" class="page-section d-none">
+                    <h4>Settings</h4>
+                    <p>Here are the settings.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../fontawesome-free-7.0.0-web/js/all.min.js"></script>
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+</body>
+</html>

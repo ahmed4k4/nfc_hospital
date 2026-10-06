@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brillora Health</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../fontawesome-free-7.0.0-web/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Brillora Health</a>
+      <div class="ms-auto d-flex align-items-center gap-5" id="langContainer">
+        <div class="d-flex align-items-center">
+          <button id="themeToggle" class="btn btn-sm btn-outline-secondary ms-4" title="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+          </button>
+          <div class="dropdown" tabindex="0">
+            <div class="dropdown-toggle" id="selectedLang">English</div>
+            <div class="dropdown-menu" id="languageMenu">
+              <div data-value="en">English</div>
+              <div data-value="ar">العربية</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mb-3">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="d-flex align-items-start">
+        <div class="avatar m-5">
+          <i class="fa-solid fa-circle-user fa-7x text-secondary"></i>
+        </div>
+        <div class="w-100">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-key" data-key="personalCode"></div>
+              <div class="info-val" id="patientCode" data-server-user="personalCode"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="name"></div>
+              <div class="info-val" id="patientName" data-server-user="name"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="nationalId"></div>
+              <div class="info-val" data-server-user="nationalId"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="occupation"></div>
+              <div class="info-val" data-server-user="occupation"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="dob"></div>
+              <div class="info-val" data-server-user="dob"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="phone"></div>
+              <div class="info-val" data-server-user="phone"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="closeContact"></div>
+              <div class="info-val" data-server-user="closeContact"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-key" data-key="governorate"></div>
+              <div class="info-val" data-server-user="governorate"></div>
+            </div>
+            <div class="col-md-12">
+              <div class="info-key" data-key="medicalCondition"></div>
+              <div class="info-val" data-server-user="medicalCondition"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mt-4">
+        <li class="nav-item">
+          <a class="nav-link active btn" data-bs-toggle="tab" data-bs-target="#details" data-key="patientDetails"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn" data-bs-toggle="tab" data-bs-target="#history" data-key="medicalHistory"></a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active p-3" id="details"></div>
+        <div class="tab-pane fade p-3" id="history">
+          <!-- الحاوية الفارغة للتاريخ الطبي -->
+          <div id="printTable" class="row g-4 justify-content-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="custom-dialog" id="detailsModal">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h1 id="modalTitle"></h1>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="dialog-body" id="modalBody"></div>
+    </div>
+  </dialog>
+
+  <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../fontawesome-free-7.0.0-web/js/all.min.js"></script>
+  <script src="../assets/themeToggle.js"></script>
+  <script src="../assets/translations.js"></script>
+  <script src="../assets/user.js"></script>
+</body>
+</html>

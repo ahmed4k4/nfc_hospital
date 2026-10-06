@@ -1,0 +1,281 @@
+/* ========== الأساسيات ========== */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    color: #222;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #f0f2f5;
+    color: #0d6efd;
+}
+
+header {
+    background-color: #ffffff;
+    transition: background 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#themeToggle {
+    transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+    background-color: #f0f0f0;
+    transform: rotate(15deg);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 120px;
+  cursor: pointer;
+  margin: 0px 20px;
+}
+.dropdown-toggle {
+  position: relative;
+  padding-right: 30px;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  background-color: #2a9df4;
+  padding: 6px 12px;
+  border-radius: 4px;
+  --arrow-right: 10px;
+  --arrow-left: auto;
+}
+
+.dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  right: var(--arrow-right);
+  left: var(--arrow-left);
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid white;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdown.open .dropdown-toggle::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #e0f0ff;
+  min-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-top: 4px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.dropdown-menu.show {
+  display: block;
+}
+.dropdown-menu div {
+  padding: 8px 12px;
+  color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.dropdown-menu div:hover {
+  background-color: #99ccff;
+  color: white;
+}
+
+.user-avatar {
+    border: 2px solid #e0e0e0;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    border-color: #0d6efd;
+}
+
+/* ========== الكروت ========== */
+.card {
+    background-color: #ffffff;
+    color: #222;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card.active {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid #0d6efd;
+}
+
+/* ========== أنيميشن الكروت ========== */
+.dashboard-card {
+    border: none;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: cardFadeUp 0.6s ease forwards;
+}
+
+.dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+.dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+.dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+.dashboard-card:nth-child(4) { animation-delay: 0.4s; }
+
+.dashboard-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes cardFadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.content-section {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* ========== الدوائر الخاصة بالمستوى ========== */
+.progress-circle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(#0d6efd calc(var(--value) * 1%), transparent 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/* جعلها مفرغة من الداخل */
+.progress-circle::before {
+    content: "";
+    position: absolute;
+    width: 38px;  /* حجم الفراغ الداخلي */
+    height: 38px;
+    background-color: white; /* لون الخلفية الداخلي */
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* النص في المنتصف */
+.progress-circle span {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ========== السكاشن القابلة للإظهار/الإخفاء ========== */
+.toggle-section {
+    display: none;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+.toggle-section.active {
+    display: block;
+}
+
+
+/* ========== المود الليلي ========== */
+.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+.dark-mode .sidebar {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .nav-link {
+    color: #ccc;
+}
+
+body.dark-mode .dropdown-toggle {
+  background-color: #444;
+  color: #eee;
+}
+body.dark-mode .dropdown-menu {
+  background-color: #333;
+  color: #eee;
+}
+body.dark-mode .dropdown-menu div {
+  background-color: #333;
+  color: #eee;
+}
+body.dark-mode .dropdown-menu div:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+.dark-mode .nav-link.active,
+.dark-mode .nav-link:hover {
+    background-color: #2c2c2c;
+    color: #4dabf7;
+}
+
+.dark-mode header {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+.dark-mode .toggle-section {
+    background: #1f1f1f;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+.dark-mode .progress-circle {
+    background: conic-gradient(#4dabf7 calc(var(--value) * 1%), #444 0);
+    color: #4dabf7;
+}
+

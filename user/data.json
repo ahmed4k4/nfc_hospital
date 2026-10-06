@@ -1,0 +1,69 @@
+[
+  {
+    "personalCode": "123456",
+    "name": "ahmed",
+    "nationalId": "881787878",
+    "occupation": "eng",
+    "dob": "2005/1/10",
+    "phone": "1212121112",
+    "closeContact": "87187878711",
+    "governorate": "cairo",
+    "medicalCondition": "no",
+    "image": ""
+  },
+  {
+    "patientDetails": {
+      "title": "Patient Information",
+      "data": [
+        { "text": "This is line 1 of patient details.", "date": "2025-08-14" },
+        { "text": "This is line 2.", "date": "2025-08-15" },
+        { "text": "This is line 3.", "date": "2025-08-16" },
+        { "text": "This is line 4.", "date": "2025-08-17" },
+        { "text": "This is line 5.", "date": "2025-08-18" }
+  ]
+    },
+    "medicalHistory": {
+      "Operations": {
+        "title": "Operations",
+        "desc": "Details about performed operations",
+        "item1": "Appendectomy - 2019",
+        "item2": "Tonsillectomy - 2021"
+      },
+      "Radiology": {
+        "title": "Radiology",
+        "desc": "Radiology scans and results",
+        "item1": "Chest X-Ray - Normal",
+        "item2": "Abdominal Ultrasound - Normal",
+        "images": ["2.png", "2.png"],
+        "videos": ["scan-video.mp4","scan-video.mp4"]
+      },
+      "Lab Tests": {
+        "title": "Laboratory Tests",
+        "desc": "Blood and urine analysis",
+        "item1": "CBC - Normal",
+        "item2": "Blood Sugar - 95 mg/dL"
+      },
+      "Medications": {
+        "title": "Medications",
+        "desc": "Current prescribed medications",
+        "med1": "Paracetamol",
+        "dose1": "500mg twice daily",
+        "med2": "Amoxicillin",
+        "dose2": "250mg three times daily"
+      },
+      "Diagnosis": {
+        "title": "Diagnosis",
+        "desc": "Medical diagnosis details",
+        "item1": "Hypertension",
+        "item2": "Seasonal Allergies"
+      },
+      "Symptoms": {
+        "title": "Symptoms",
+        "desc": "Reported symptoms",
+        "item1": "Headache",
+        "item2": "Fever",
+        "item3": "Cough"
+      }
+    }
+  }
+]
